@@ -11,33 +11,48 @@ import java.util.List;
 public class Pizza extends ElementiMenu {
 
     ArrayList<Toppings> toppings;
+    private boolean isXl = false;
 
-    public Pizza(String name,ArrayList<Toppings> toppings, int calories, double price){
+    public Pizza(String name, ArrayList<Toppings> toppings, double price, boolean isXl) {
 
-        super(name, calories, price);
-        Toppings tomato=new Toppings("Tomato", 50, 0.00);
-        Toppings cheese=new Toppings("Cheese", 92, 0.69);
-        this.toppings= new ArrayList<>();
+        super(name, price);
+        Toppings tomato = new Toppings("Tomato", 50, 0.00);
+        Toppings cheese = new Toppings("Cheese", 92, 0.69);
+        this.isXl = isXl;
+        this.toppings = new ArrayList<>();
         this.toppings.add(tomato);
         this.toppings.add(cheese);
 
         this.toppings.addAll(toppings);
 
 
-
     }
 
-    public String getToppingsList(){
-        List<String> ingredienti=new ArrayList<>();
-       toppings.forEach(t-> ingredienti.add(t.getName()));
-       return String.join(", ", ingredienti);
+    public String getToppingsList() {
+        List<String> ingredienti = new ArrayList<>();
+        toppings.forEach(t -> ingredienti.add(t.getName()));
+        return String.join(", ", ingredienti);
+    }
+
+    public int setCalories(List<Toppings> toppingsList, boolean isXl) {
+
+        int tot = 1012;
+        if (toppingsList != null) {
+            for (int i = 0; i < toppingsList.size(); i++) {
+                tot += toppingsList.get(i).getCalories();
+            }
+
+        }
+
+        if (isXl) return tot += (tot * 10) / 100;
+        else return tot;
     }
 
     @Override
     public void printInfo() {
         System.out.println(getName() + " - " +
-                        " (" + getToppingsList()+ ")  "+
-                " - " +  getCalories() +" kcal - € " +
+                " (" + getToppingsList() + ")  " +
+                " - " + getCalories() + " kcal - € " +
                 getPrice());
 
 

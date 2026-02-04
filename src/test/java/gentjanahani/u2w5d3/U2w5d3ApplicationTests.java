@@ -29,7 +29,6 @@ class U2w5d3ApplicationTests {
         double tot = ordineTest.calcolaTotale();
         assertEquals(12.98, tot);
 
-
     }
 
 
