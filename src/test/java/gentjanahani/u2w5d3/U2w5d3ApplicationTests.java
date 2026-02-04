@@ -1,9 +1,6 @@
 package gentjanahani.u2w5d3;
 
-import gentjanahani.u2w5d3.entities.Order;
-import gentjanahani.u2w5d3.entities.Pizza;
-import gentjanahani.u2w5d3.entities.StatoTavolo;
-import gentjanahani.u2w5d3.entities.Table;
+import gentjanahani.u2w5d3.entities.*;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -61,4 +58,14 @@ class U2w5d3ApplicationTests {
         assertThrows(RuntimeException.class, () -> new Order(tavolo, 5));
     }
 
+    @ParameterizedTest
+    @CsvSource({"1.00, 2", "2.00, 2", "3.00, 2"})
+    void testCostoCopertoVariabile(double costoCoperto, int coperti) {
+        Table tavolo = new Table(1, 4, StatoTavolo.LIBERO, costoCoperto);
+        Order ordine = new Order(tavolo, coperti);
+
+        ordine.addItems(new Drinks("water", 0, 1.00));
+        double risultatoAtteso = 1.00 + (coperti * costoCoperto);
+        assertEquals(risultatoAtteso, ordine.calcolaTotale());
+    }
 }
