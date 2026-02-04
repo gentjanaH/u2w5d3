@@ -1,4 +1,4 @@
-package gentjanahani.u2w5d2.entities;
+package gentjanahani.u2w5d3.entities;
 
 import java.util.List;
 import lombok.AllArgsConstructor;
