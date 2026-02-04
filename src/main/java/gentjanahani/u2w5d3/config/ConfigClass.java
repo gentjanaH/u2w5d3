@@ -19,7 +19,7 @@ public class ConfigClass {
     public Pizza margherita() {
         ArrayList<Toppings> toppings = new ArrayList<>();
 
-        return new Pizza("pizza Margherita", toppings, 4.99, false);
+        return new Pizza("pizza Margherita", toppings, 1104, 4.99);
     }
 
     @Bean
@@ -28,7 +28,7 @@ public class ConfigClass {
         toppings.add(ham());
         toppings.add(pineapple());
 
-        return new Pizza("pizza Hawaiian", toppings, 6.49, false);
+        return new Pizza("pizza Hawaiian", toppings, 1024, 6.49);
     }
 
     @Bean
@@ -37,17 +37,7 @@ public class ConfigClass {
         toppings.add(salami());
 
 
-        return new Pizza("pizza Salami", toppings, 5.99, false);
-    }
-
-    @Bean
-    public Pizza salamiPizzaXL() {
-        ArrayList<Toppings> toppings = new ArrayList<>();
-        toppings.add(salami());
-        toppings.add(salami());
-
-
-        return new Pizza("pizza Salami", toppings, 5.99, true);
+        return new Pizza("pizza Salami", toppings, 1160, 5.99);
     }
 
 
